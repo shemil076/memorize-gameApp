@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">memorize</string>
+    <string name="welcomeNote">Welcome to Memorize</string>
+    <string name="start">START</string>
+</resources>
