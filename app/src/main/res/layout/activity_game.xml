@@ -33,11 +33,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                app:srcCompat="@android:drawable/ic_menu_help" />
+                app:background="@android:drawable/ic_menu_help" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="75dp"
+            android:layout_width="81dp"
             android:layout_height="75dp"
             android:orientation="vertical"
             app:layout_column="1"
@@ -49,7 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                app:srcCompat="@android:drawable/ic_menu_help" />
+                app:background="@android:drawable/ic_menu_help" />
         </LinearLayout>
 
         <LinearLayout
@@ -65,7 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                app:srcCompat="@android:drawable/ic_menu_help" />
+                app:background="@android:drawable/ic_menu_help" />
         </LinearLayout>
 
         <LinearLayout
@@ -81,7 +81,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                app:srcCompat="@android:drawable/ic_menu_help" />
+                app:background="@android:drawable/ic_menu_help" />
         </LinearLayout>
 
         <LinearLayout
@@ -97,7 +97,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                app:srcCompat="@android:drawable/ic_menu_help" />
+                app:background="@android:drawable/ic_menu_help" />
         </LinearLayout>
 
 
@@ -115,7 +115,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                app:srcCompat="@android:drawable/ic_menu_help" />
+                app:background="@android:drawable/ic_menu_help" />
         </LinearLayout>
 
         <LinearLayout
@@ -131,7 +131,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                app:srcCompat="@android:drawable/ic_menu_help" />
+                app:background="@android:drawable/ic_menu_help" />
         </LinearLayout>
 
         <LinearLayout
@@ -147,7 +147,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                app:srcCompat="@android:drawable/ic_menu_help" />
+                app:background="@android:drawable/ic_menu_help" />
         </LinearLayout>
 
         <LinearLayout
@@ -163,7 +163,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                app:srcCompat="@android:drawable/ic_menu_help" />
+                app:background="@android:drawable/ic_menu_help" />
         </LinearLayout>
 
         <LinearLayout
@@ -181,7 +181,7 @@
                 android:gravity="center"
                 app:layout_column="0"
                 app:layout_row="0"
-                app:srcCompat="@android:drawable/ic_menu_help" />
+                app:background="@android:drawable/ic_menu_help" />
         </LinearLayout>
 
 
@@ -200,7 +200,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                app:srcCompat="@android:drawable/ic_menu_help" />
+                app:background="@android:drawable/ic_menu_help" />
         </LinearLayout>
 
         <LinearLayout
@@ -218,7 +218,7 @@
                 android:gravity="center"
                 app:layout_column="1"
                 app:layout_row="2"
-                app:srcCompat="@android:drawable/ic_menu_help" />
+                app:background="@android:drawable/ic_menu_help" />
         </LinearLayout>
 
         <LinearLayout
@@ -234,7 +234,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                app:srcCompat="@android:drawable/ic_menu_help" />
+                app:background="@android:drawable/ic_menu_help" />
         </LinearLayout>
 
         <LinearLayout
@@ -250,7 +250,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                app:srcCompat="@android:drawable/ic_menu_help" />
+                app:background="@android:drawable/ic_menu_help" />
         </LinearLayout>
 
         <LinearLayout
@@ -266,7 +266,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                app:srcCompat="@android:drawable/ic_menu_help" />
+                app:background="@android:drawable/ic_menu_help" />
         </LinearLayout>
 
 
@@ -285,7 +285,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                app:srcCompat="@android:drawable/ic_menu_help" />
+                app:background="@android:drawable/ic_menu_help" />
         </LinearLayout>
 
         <LinearLayout
@@ -301,7 +301,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                app:srcCompat="@android:drawable/ic_menu_help" />
+                app:background="@android:drawable/ic_menu_help" />
         </LinearLayout>
 
         <LinearLayout
@@ -317,7 +317,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                app:srcCompat="@android:drawable/ic_menu_help" />
+                app:background="@android:drawable/ic_menu_help" />
         </LinearLayout>
 
         <LinearLayout
@@ -333,7 +333,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                app:srcCompat="@android:drawable/ic_menu_help" />
+                app:background="@android:drawable/ic_menu_help" />
         </LinearLayout>
 
         <LinearLayout
@@ -349,7 +349,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                app:srcCompat="@android:drawable/ic_menu_help" />
+                app:background="@android:drawable/ic_menu_help" />
         </LinearLayout>
 
         <!-- row 4-->
@@ -366,7 +366,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                app:srcCompat="@android:drawable/ic_menu_help" />
+                app:background="@android:drawable/ic_menu_help" />
         </LinearLayout>
 
         <LinearLayout
@@ -382,7 +382,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                app:srcCompat="@android:drawable/ic_menu_help" />
+                app:background="@android:drawable/ic_menu_help" />
         </LinearLayout>
 
         <LinearLayout
@@ -398,7 +398,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                app:srcCompat="@android:drawable/ic_menu_help" />
+                app:background="@android:drawable/ic_menu_help" />
         </LinearLayout>
 
         <LinearLayout
@@ -414,7 +414,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                app:srcCompat="@android:drawable/ic_menu_help" />
+                app:background="@android:drawable/ic_menu_help" />
         </LinearLayout>
 
         <LinearLayout
@@ -431,10 +431,22 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 app:layout_column="0"
-                app:layout_row="0"
-                app:srcCompat="@android:drawable/ic_menu_help" />
+                app:layout_row="0"/>
+<!--                app:image="@drawable/defaultmark" />-->
         </LinearLayout>
 
 
     </androidx.gridlayout.widget.GridLayout>
+
+    <TextView
+        android:id="@+id/score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="TextView"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
