@@ -2,4 +2,5 @@
     <string name="app_name">memorize</string>
     <string name="welcomeNote">Welcome to Memorize</string>
     <string name="start">START</string>
+    <string name="get_ready">GET READY</string>
 </resources>

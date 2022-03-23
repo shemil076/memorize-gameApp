@@ -31,6 +31,7 @@ class gameActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var labelScore : TextView
     lateinit var timer:Timer
+    lateinit var status : TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
@@ -76,6 +77,7 @@ class gameActivity : AppCompatActivity(), View.OnClickListener {
         )
 
         labelScore = findViewById(R.id.score)
+        status = findViewById(R.id.status)
         buttonsArray = arrayOf(row1Buttons,row2Buttons,row3Buttons,row4Buttons,row5Buttons)
 
         for(array in buttonsArray) {
@@ -185,7 +187,7 @@ class gameActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
 
-            labelScore.text = "$correctCount / $clickedCount"
+            labelScore.text = "SCORE = $correctCount / $clickedCount"
 
             if (pressedCount >= selections.size){
                 again()
@@ -250,6 +252,7 @@ class gameActivity : AppCompatActivity(), View.OnClickListener {
     fun timer(option : Int) {
         var startTimer = true
         Timer().scheduleAtFixedRate(object : TimerTask() {
+            @SuppressLint("SetTextI18n")
             override fun run() {
                 if (startTimer){
                     seconds -= 1
@@ -257,12 +260,14 @@ class gameActivity : AppCompatActivity(), View.OnClickListener {
                         when (option) {
                             1 -> {
                                 if (seconds == 0){
+                                    status.text ="FOCUS ON.."
                                     showPattern()
                                     startTimer = false
                                 }
                             }
                             2 -> {
                                 if (seconds == 0){
+                                    status.text ="GO ON.."
                                     clear()
                                     start = true
                                     startTimer = false
