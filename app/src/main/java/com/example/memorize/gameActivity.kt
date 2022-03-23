@@ -3,13 +3,16 @@ package com.example.memorize
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.View
+import android.view.View.VISIBLE
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.core.os.HandlerCompat.postDelayed
 import androidx.core.view.isVisible
 import java.util.*
-import kotlin.random.Random.Default.nextInt
+import kotlin.concurrent.schedule
 
 class gameActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -18,9 +21,16 @@ class gameActivity : AppCompatActivity(), View.OnClickListener {
     var selections = mutableListOf<String>()
     var correctCount = 0
     var pressedCount = 0
-    var buttonCount  = 25
+    var showButtonCount = 0
+    var clickedCount = 0
+    var seconds = 5
+    var start = false
+//    var startTimer = true
 
-    lateinit var labelScore : TextView
+
+
+    private lateinit var labelScore : TextView
+    lateinit var timer:Timer
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
@@ -74,10 +84,10 @@ class gameActivity : AppCompatActivity(), View.OnClickListener {
              button.setImageResource(R.drawable.defaultmark)
          }
         }
-            generate()
+        showGrid()
     }
 
-    fun generate(){
+    fun showGrid(){
         val size = Random().nextInt(5)
 
         for((index, buttons) in buttonsArray.withIndex()) {
@@ -92,7 +102,7 @@ class gameActivity : AppCompatActivity(), View.OnClickListener {
                         buttons[0].visibility = View.GONE
                         buttons[4].visibility = View.GONE
                     }
-                    buttonCount = 9
+
                 }
                 1 -> {  // 3 x 4
                     if(index == 3 || index == 4){
@@ -102,7 +112,7 @@ class gameActivity : AppCompatActivity(), View.OnClickListener {
                     }else{
                         buttons[4].visibility = View.GONE
                     }
-                    buttonCount = 12
+
                 }
                 2 -> {      //4 x 3
                     if(index == 4){
@@ -113,12 +123,12 @@ class gameActivity : AppCompatActivity(), View.OnClickListener {
                         buttons[3].visibility = View.GONE
                         buttons[4].visibility = View.GONE
                     }
-                    buttonCount = 12
+
                 }
 
                 3 -> {          // 5 x 4
                     buttons[4].visibility = View.GONE
-                    buttonCount = 20
+
                 }
                 4 -> {      // 4 x 5
                     if(index == 4){
@@ -126,65 +136,92 @@ class gameActivity : AppCompatActivity(), View.OnClickListener {
                             buttonSet.visibility = View.GONE
                         }
                     }
-                    buttonCount = 20
+
                 }
             }
         }
+
+        timer(1)
     }
 
     @SuppressLint("SetTextI18n")
     override fun onClick(view: View?) {
-        if(pressedCount < buttonCount) {
+        if (start){
+            clickedCount += 1
             pressedCount += 1
-        }
+            var found = false
+            val clickedButton = view?.let { resources.getResourceEntryName(it.id) }
 
-        val pressedButton = view?.let { resources.getResourceEntryName(it.id) }
-        Log.d("pressed button: ","$pressedButton")
-        if (selections.contains(pressedButton)){
-            correctCount += 1
-            for (buttons in buttonsArray){
-                for (button in buttons){
-                    if (resources.getResourceEntryName(button.id) == pressedButton){
-                        button.setImageResource(R.drawable.check)
-                    }
+            for (id in selections){
+                if (clickedButton == id){
+                    found = true
                 }
             }
-        }else{
-            for (buttons in buttonsArray){
-                for (button in buttons){
-                    if (resources.getResourceEntryName(button.id) == pressedButton){
-                        button.setImageResource(R.drawable.remove)
+
+            if (found){
+                correctCount += 1
+
+
+                for (buttons in buttonsArray){
+                    for (button in buttons){
+                        if (resources.getResourceEntryName(button.id) == clickedButton){
+                            button.setImageResource(R.drawable.check)
+                        }
                     }
                 }
+                if (clickedButton != null) {
+                    hide(clickedButton)
+                }
+            }else{
+                for (buttons in buttonsArray){
+                    for(button in buttons){
+                        if (resources.getResourceEntryName(button.id) == clickedButton){
+                            button.setImageResource(R.drawable.remove)
+                        }
+                    }
+                }
+                if (clickedButton != null) {
+                    hide(clickedButton)
+                }
+            }
+
+            labelScore.text = "$correctCount / $clickedCount"
+
+            if (pressedCount >= selections.size){
+                again()
             }
         }
-
-        labelScore.text = "Correct/All Selections : $correctCount/$pressedCount"
     }
 
-    fun showPatter() {
+    fun showPattern() {
         showedButtons.clear()
-        for (buttons in buttonsArray) {
-            for (buttonSet in buttons) {
-                if(buttonSet.isVisible){
-                    showedButtons.add(resources.getResourceEntryName(buttonSet.id))
+
+        for(buttons in buttonsArray){
+            for(button in buttons){
+                if(button.visibility == VISIBLE){
+                    showedButtons.add(resources.getResourceEntryName(button.id))
                 }
             }
         }
+
         showedButtons.shuffle()
 
-        val size = 3 + Random().nextInt(showedButtons.size)
-        for(i in 0..size){
-            selections.add(showedButtons[i])
-            var element = showedButtons[i]
-            for(buttons in buttonsArray){
-                for(button in buttons){
-                    if(resources.getResourceEntryName(button.id) == element){
-                        button.setImageResource(R.drawable.check)
+        val patterns = kotlin.random.Random.nextInt(3,showedButtons.size)
+
+        for (n in 0..patterns) {
+            selections.add(showedButtons[n])
+            val buttonName = showedButtons[n]
+            for(arr in buttonsArray){
+                for (buttons in arr){
+                    if (resources.getResourceEntryName(buttons.id) == buttonName) {
+                        buttons.setImageResource(R.drawable.check)
                     }
                 }
             }
         }
+
+        seconds += 5
+        timer(2)
     }
 
     fun clear() {
@@ -193,6 +230,65 @@ class gameActivity : AppCompatActivity(), View.OnClickListener {
                 button.setImageResource(R.drawable.defaultmark)
             }
         }
+        pressedCount = 0
     }
+
+
+
+    fun hide(idName: String) {
+        val handler = Handler()
+        handler.postDelayed({
+            for(buttons in buttonsArray){
+                for(button in buttons){
+                    if (resources.getResourceEntryName(button.id) == idName){
+                        button.setImageResource(R.drawable.defaultmark)
+                    }
+                }
+            }
+        }, 2000)
+    }
+    fun timer(option : Int) {
+        var startTimer = true
+        Timer().scheduleAtFixedRate(object : TimerTask() {
+            override fun run() {
+                if (startTimer){
+                    seconds -= 1
+                    runOnUiThread{
+                        when (option) {
+                            1 -> {
+                                if (seconds == 0){
+                                    showPattern()
+                                    startTimer = false
+                                }
+                            }
+                            2 -> {
+                                if (seconds == 0){
+                                    clear()
+                                    start = true
+                                    startTimer = false
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },0,1000)
+    }
+
+    fun again(){
+        start = false
+        clear()
+
+        for(buttons in buttonsArray){
+            for(button in buttons){
+                button.visibility = View.VISIBLE
+            }
+        }
+
+        selections.clear()
+        seconds += 5
+        showGrid()
+    }
+
 }
 
